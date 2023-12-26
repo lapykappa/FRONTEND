@@ -1,0 +1,75 @@
+<div class="container-grid">
+  <!-- Header -->
+  <div class="header-area">
+    <ix-application-header class="hydrated breakpoint-md" slot="application-header">
+      <div class="logo-title" slot="logo">
+        <img src="assets/siemens-logo.png" alt="Siemens Logo" class="siemens-logo" />
+      </div>
+    </ix-application-header>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav-area">
+    <ix-menu id="myNav" class="overlay">
+      <ix-menu-item home-tab tab-icon="home"> Home </ix-menu-item>
+    </ix-menu>
+  </div>
+
+  <!-- Content Area -->
+  <div class="content-area">
+    
+    <app-ag-grid-component class="h-100 w-100" (onSelectComputer)="onSelectedComputersChanged($event)"></app-ag-grid-component>
+  </div>
+
+     <!-- Details Area -->
+     
+     <div class="details-area theme-classic-dark" *ngIf="isComputerSelected">
+      <ng-container *ngFor="let selectedComputer of selectedComputers">
+        <div class="ix-layout__main">
+          <h2 class="details-header ag">Computer details</h2>
+          <div class="computer-details">
+            
+            <!-- Full Name Tile -->
+            <ix-tile id="myTile" size="medium" class="mr-1">
+              <div slot="header">Owner</div>
+              <div class="text-l">{{ selectedComputer.fullname }}</div>
+            </ix-tile>
+               <!-- CIS animation Tile -->
+               <ix-tile id="myTile" size="medium" class="mr-1">
+                <div slot="header">Nightly automation</div>
+                <div class="text-l"><ix-toggle></ix-toggle></div>
+              </ix-tile>
+            <!-- Qlaus Task ID Tile -->
+            <ix-tile id="myTile" size="medium" class="mr-1">
+              <div slot="header">QlausTaskID</div>
+              <div class="text-l">{{ selectedComputer.qlausTaskId }}</div>
+            </ix-tile>
+            <!-- Jobset Name Tile -->
+            <ix-tile id="myTile" size="medium" class="mr-1">
+              <div slot="header">Jobset</div>
+              <div class="text-l">{{ selectedComputer.jobsetName }}</div>
+            </ix-tile>
+            <ix-button class="m-1" outline variant="primary"(click)="runPowerShellScript()">Run CIS on the selected computer</ix-button>
+          </div>
+            <div class="edit-section">
+              <div class="input-container">
+                <div>
+                  <label>QlausTaskID: </label>
+                  <input type="text" [(ngModel)]="selectedComputer.qlausTaskId" />
+                </div>
+                <div class="jobset-name-input">
+                  <label>Jobset: </label>
+                  <input type="text" [(ngModel)]="selectedComputer.jobsetName" />
+                </div>
+              </div>
+                                         
+            </div>
+            <div class="button-container">
+              <ix-button variant="primary" (click)="saveChanges()">Save Changes</ix-button>
+            </div>
+          
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  

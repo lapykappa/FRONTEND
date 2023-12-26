@@ -1,0 +1,101 @@
+@import '~ag-grid-community/styles/ag-theme-alpine.css';
+
+
+
+.container-grid {
+  display: grid;
+  grid-template-areas: 
+    "header header header"
+    "nav content details"; 
+  grid-template-rows: auto 1fr; 
+  grid-template-columns: 50px 1fr 0.5fr; 
+  height: 100vh;
+  background-color:#181d1f;
+}
+
+
+.header-area {
+  grid-area: header;
+}
+
+.nav-area {
+  grid-area: nav;
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+}
+
+.content-area {
+  grid-area: content;
+  display: flex;
+}
+
+app-ag-grid-component {
+  flex-grow: 1;
+  overflow: auto;
+}
+.details-area {
+  grid-area: details;
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+  background-color:#181d1f;
+  border: 3px solid rgba(33, 150, 243, 0.49);
+  border-radius: 0px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+
+.details-header {
+  
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+
+  
+  
+}
+
+
+
+.ix-tile {
+  background: var(--background-color-2, #23233C);
+  border-radius: 0px;
+  display: flex;
+  width: 475px; 
+  height: 120px; 
+  align-items: flex-start;
+  }
+  
+  
+  
+
+
+#myTile {
+  //border-radius: 0px;
+  //border: 3px solid rgba(33, 150, 243, 0.49) !important;
+  
+}
+
+
+.computer-details {
+  display: flex;
+  width: 574px;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 80px;
+  flex-wrap: wrap;
+  justify-content: center;
+ 
+}
+
+.button-container {
+  text-align: center;
+}
+
+.jobset-name-input {
+  margin-bottom: 30px;  
+}
